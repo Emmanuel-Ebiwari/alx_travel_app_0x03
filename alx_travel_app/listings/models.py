@@ -48,3 +48,7 @@ class Payment(models.Model):
     status = models.CharField(max_length=20)
     transaction_id = models.CharField(max_length=255, unique=True)
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE, related_name='payments')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.transaction_id} - {self.status}"
