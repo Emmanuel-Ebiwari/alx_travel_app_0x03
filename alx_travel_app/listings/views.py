@@ -10,7 +10,7 @@ import requests, environ, json, uuid
 from pathlib import Path
 from django.urls import reverse
 
-from .tasks import send_payment_confirmation_email
+from .tasks import send_payment_confirmation_email, send_booking_confirmation_email
 # Initialize environment variables
 env = environ.Env()
 
@@ -61,6 +61,21 @@ class BookingView(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         booking = serializer.save(user=request.user)
+
+        # ✅ Define user_email and booking_details here
+        user_email = request.user.email
+        booking_details = (
+            f"Booking ID: {booking.booking_id}\n"
+            f"Property: {booking.listing.name}\n"
+            f"Location: {booking.listing.location}\n"
+            f"Start Date: {booking.start_date}\n"
+            f"End Date: {booking.end_date}\n"
+            f"Total Price: {booking.total_price}\n"
+            f"Status: {booking.status}"
+        )
+
+        # ✅ Trigger Celery email task
+        send_booking_confirmation_email.delay(recipient_email=user_email, booking_details=booking_details)
 
         # Call initiate-payment with booking_id
         try:

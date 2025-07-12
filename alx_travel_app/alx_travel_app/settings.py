@@ -141,7 +141,9 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True  # Set to False and specify allowed origins in production
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # or your Redis URI
+# Celery configuration
+CELERY_BROKER_URL = 'amqp://localhost' # or your RabbitMQ URI
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'  # or your Redis URI
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 

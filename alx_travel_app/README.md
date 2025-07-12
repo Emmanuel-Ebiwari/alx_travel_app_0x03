@@ -1,12 +1,12 @@
-# ALX Travel App 0x01
+# ALX Travel App 0x03
 
-This project (`alx_travel_app_0x01`) is a RESTful API built with Django and Django REST Framework. It provides endpoints to manage **listings** and **bookings** for a travel application. The API supports full CRUD operations and is documented with Swagger.
+This project (`alx_travel_app_0x03`) is a RESTful API built with Django and Django REST Framework. It provides endpoints to manage **listings** and **bookings** for a travel application. The API supports full CRUD operations and is documented with Swagger.
 
 ---
 
 ## 🔁 Project Duplication
 
-This project is a duplicate of `alx_travel_app_0x00`, enhanced with:
+This project is a duplicate of `alx_travel_app_0x03`, enhanced with:
 
 - ViewSets for Listings and Bookings
 - API routing using DRF routers
@@ -17,7 +17,7 @@ This project is a duplicate of `alx_travel_app_0x00`, enhanced with:
 ## 📁 Project Structure
 
 ```
-alx_travel_app_0x01/
+alx_travel_app_0x03/
 ├── listings/
 │   ├── models.py
 │   ├── views.py          ← ListingView and BookingView defined here
@@ -37,7 +37,7 @@ alx_travel_app_0x01/
 
    ```bash
    git clone <your-repo-url>
-   cd alx_travel_app_0x01
+   cd alx_travel_app_0x03
    ```
 
 2. **Create & Activate Virtual Environment**
